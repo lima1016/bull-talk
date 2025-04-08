@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id "nebula.lint" version "20.1.0"
+}
+
+group = 'com.lima'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.4.1'
+    // redis session
+    implementation 'org.springframework.session:spring-session-data-redis:3.4.1'
+
+    // jwt
+    implementation 'com.auth0:java-jwt:3.12.0'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Swagger
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
+    // DB
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.2'
+    implementation 'io.opentelemetry:opentelemetry-api:1.32.0'  // Use the latest compatible version
+
+    // Elasticsearch
+    implementation 'org.elasticsearch:elasticsearch:8.17.1'
+    implementation 'co.elastic.clients:elasticsearch-java:8.12.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+
+    // Connect http
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.11.0'
+
+    // TEST
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // TA4J
+    implementation 'org.ta4j:ta4j-core:0.15'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+gradleLint.rules -= 'unused-dependency' // add as many rules here as you'd like
+

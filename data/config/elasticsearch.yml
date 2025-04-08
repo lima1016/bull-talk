@@ -1,0 +1,6 @@
+# Elasticsearch 기본 설정
+cluster.name: bt-cluster
+node.name: ${NODE_NAME}  # 환경 변수로 동적 설정
+network.host: 0.0.0.0
+path.data: /usr/share/elasticsearch/data
+bootstrap.memory_lock: true

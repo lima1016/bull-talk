@@ -1,0 +1,32 @@
+api-key: "O4DHI459B5GRYIIX"
+
+server:
+  port: 8083
+
+spring:
+  application:
+    name: console-service
+  security:
+    user:
+      name: btuser
+      password: 1016
+  datasource:
+    url: jdbc:postgresql://localhost:5432/btrdb
+    username: btuser
+    password: 1016
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+jwt:
+  secret-key: "SECRET"
+  refresh-secret-key: "REFRESH_SECRET"
+  token-time: 3600 # 1 hour
+  refresh-token-time: 300
