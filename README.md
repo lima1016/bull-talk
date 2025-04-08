@@ -1,6 +1,7 @@
 # bull-talk
 
 주식장에서 실시간 채팅을 열어 주식에 대해 이야기 나누는 플랫폼. 
+https://github.com/f-lab-edu/bull-talk/issues
 
 ## 서버 구조
 <img width="1130" alt="image" src="https://github.com/user-attachments/assets/7fd6f535-0d45-4344-9187-38a63ed24eca" />
